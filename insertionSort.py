@@ -7,7 +7,8 @@ def insertionSort(array):
             array[y+1]=array[y]
             y=y-1
         array[y+1]=key
-    print(array)
+    # Use This Print to verify  while invoking from main file
+    #print(array)
 
 
 # Use for Indiviual Analysis and Code Correctness
