@@ -1,7 +1,7 @@
 from numpy import random as rand
 from insertionSort import insertionSort as insertionSortCall
 from mergeSort import mergeSort as mergeSortCall
-from heapSort import heapSort as heapSortCall
+from heapSort import MinHeap
 from quicksort import quickSortIterative as quickSortCall
 from modifiedQuickSort import mquickSort as mquickSortCall
 import time as t
@@ -36,10 +36,17 @@ print("MergeSort Takes : ",mergeSort_End-mergeSort_Start)
 #### Function Call to HeapSort
 
 HeapSort_Start=t.time()
-heapSortCall(arrayInput)
+#heapSortCall(arrayInput)
 
 # Use This Print to verify  while invoking from main file
 #print(heapSortCall(arrayInput))
+heap=MinHeap(testDataSize)
+heap_ar=[]
+for i in arrayInput:
+    heap.insert(i)
+for i in range(len(arrayInput)):
+	heap_ar.append(heap.remove())
+#print(heap_ar)
 
 HeapSort_End=t.time()
 
@@ -65,6 +72,6 @@ mquickSortCall(arrayInput,0,testDataSize)
 
 # Use This Print to verify  while invoking from main file
 mquickSort_End=t.time()
-print(mquickSortCall(arrayInput,0,testDataSize))
+#print(mquickSortCall(arrayInput,0,testDataSize))
 
 print("Modifed - QuickSort Takes : ",mquickSort_End-mquickSort_Start)
