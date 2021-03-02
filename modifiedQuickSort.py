@@ -1,38 +1,53 @@
-from insertionSort import insertionSort as insertionSortCall
+medianC = 0
+def median(a, b, c):
+    if ( a - b) * (c - a) >= 0:
+        return a
+    elif (b - a) * (c - b) >= 0:
+        return b
+    else:
+        return c
 
-def partitionMedian(array, leftend, rightend):
-    pivot = array[leftend]
-    i = leftend + 1
-    for j in range(leftend + 1, rightend):
+def partition_median(array, smallValArr, highValArr):
+    small = array[smallValArr]
+    high = array[highValArr - 1]
+    length = highValArr - smallValArr
+    middle = array[smallValArr + length // 2]
+    pivot = median(small, high, middle)
+    pivotindex = array.index(pivot)
+    array[pivotindex] = array[smallValArr]
+    array[smallValArr] = pivot
+    i = smallValArr + 1
+    for j in range(smallValArr + 1, highValArr):
         if array[j] < pivot:
             temp = array[j]
             array[j] = array[i]
             array[i] = temp
             i += 1
 
-    leftendval = array[leftend]
-    array[leftend] = array[i-1]
-    array[i-1] = leftendval
-    return i - 1 
-def mquickSort(array, leftindex, rightindex):
-    while leftindex<rightindex:
-        if(rightindex<=leftindex+9):
-            insertionSortCall(array)
-            break
-        else:
-            newpivotindex = partitionMedian(array, leftindex, rightindex)
-            if newpivotindex-leftindex<rightindex-newpivotindex:
-                mquickSort(array, leftindex, newpivotindex-1)
-                leftindex=newpivotindex+1
-            else:
-                mquickSort(array, newpivotindex + 1, rightindex)
-                rightindex=newpivotindex-1
-    return array
+    highEndVal = array[smallValArr]
+    array[smallValArr] = array[i - 1]
+    array[i - 1] = highEndVal
+    return i - 1
 
-#arr = [2,1,6,9,10,11,60,14,15,22,8,88,40,24,36,75,888,14] 
-#n = len(arr)
-#mquickSort(arr,0,n)
-#print(arr)
-#quick_sort1(arr, 0, n) 
-#for i in range(n): 
-#	print(arr[i])
+def quicksort_median(array, smallIndex, highIndex):
+    global medianC
+    if smallIndex+ 10  <= highIndex:
+        newpivotindex = partition_median(array, smallIndex, highIndex)
+
+        medianC += (highIndex - smallIndex - 1)
+        quicksort_median(array, smallIndex, newpivotindex)
+        quicksort_median(array, newpivotindex + 1, highIndex)
+
+    else:
+        insertion_sortt(array,smallIndex,highIndex)
+
+def insertion_sortt(array,a,b):
+    for i in range(a, b):
+        j = i
+        while j > 0 and array[j] < array[j-1]:
+            array[j],array[j-1]=array[j-1],array[j]
+            j = j - 1
+
+def mquick_sort(inputArr):
+    quicksort_median(inputArr, 0, len(inputArr))
+    return inputArr
