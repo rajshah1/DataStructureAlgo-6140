@@ -28,9 +28,8 @@ for index in range(0, len(inputTestDataarr)):
 
 
     arrayInput = []
-    for a in range(0,inputTestDataarr[index]):
-        arrayInput.append(random.randint(1,inputTestDataarr[index]+1))
-        #arrayInput.append(a);
+    for a in range(inputTestDataarr[index],0,-1):
+        arrayInput.append(a)
     
     insertionSort_Start=t.time()
     insertionSortCall(arrayInput[:])
@@ -73,7 +72,7 @@ for index in range(0, len(inputTestDataarr)):
 
     #### Function Call to modifed quickSort
     mquickSort_Start=t.time()
-    mquickSortCall(arrayInput[:])
+    #mquickSortCall(arrayInput[:])
     # Use This Print to verify  while invoking from main file
     mquickSort_End=t.time()
     #print(randomArray)

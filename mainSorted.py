@@ -29,8 +29,7 @@ for index in range(0, len(inputTestDataarr)):
 
     arrayInput = []
     for a in range(0,inputTestDataarr[index]):
-        arrayInput.append(random.randint(1,inputTestDataarr[index]+1))
-        #arrayInput.append(a);
+        arrayInput.append(a)
     
     insertionSort_Start=t.time()
     insertionSortCall(arrayInput[:])
@@ -60,7 +59,7 @@ for index in range(0, len(inputTestDataarr)):
 
     HeapSort_End=t.time()
     time_heap_sort.append((HeapSort_End-HeapSort_Start)*1000)
-    print("HeapSort Takes : ",HeapSort_End-HeapSort_Start)
+    #print("HeapSort Takes : ",HeapSort_End-HeapSort_Start)
     
     #### Function Call to inplcae quickSort
     quickSort_Start=t.time()
