@@ -1,8 +1,8 @@
 # Algo Sort Comparision Project 
 
 ## Contributors:
-* Raj Shah  801205036
-* Parth Patel 801212088
+* Raj Shah  (ID # 801205036 )
+* Parth Patel (ID # 801212088 )
 
 
 ### How to Run Project 
